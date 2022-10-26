@@ -1,0 +1,9 @@
+-- Clase 1 --
+El profesor nos explica unos puntos sobre el proyecto que se va a desarrollar.
+    - Componentes en Angular
+    - Comunicación entre componentes
+    - Ciclo de vida de un componente
+    - Servicios en Angular
+    - Inyección de dependencias
+    - Consumo de datos provenientes de una API
+    - Pipes y Directivas
