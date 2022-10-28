@@ -1,0 +1,35 @@
+-- Clase 1 --
+El profesor nos explica unos puntos sobre el proyecto que se va a desarrollar.
+    - Componentes en Angular
+    - Comunicación entre componentes
+    - Ciclo de vida de un componente
+    - Servicios en Angular
+    - Inyección de dependencias
+    - Consumo de datos provenientes de una API
+    - Pipes y Directivas
+
+--- Clase 13 --
+
+¿Qué es la inyección de dependencias?
+
+Es muy sencillo crear un servicio en Angular, inyectarlo en un componente y utilizar su lógica. 
+Pero siempre es recomendable entender **¿qué es la inyección de dependencias?, cómo se está haciendo 
+y qué sucede detrás en tu aplicación.
+
+Patrones de diseño
+Angular usa varios patrones de diseño para permitir que esto funcione.
+
+Inyección de dependencias
+Imagínate que tienes el siguiente panorama:
+Un Servicio A que emplea el Servicio B y este a su vez utiliza el Servicio C.
+
+Si tuvieses que instanciar el Servicio A, primero deberías:
+instanciar el C para poder continuar con el B y luego sí hacerlo con el A. Se vuelve confuso y poco 
+escalable si en algún momento también tienes que instanciar el Servicio D o E.
+
+La inyección de dependencias soluciona las dependencias de una clase por nosotros.
+
+Cuando instanciamos en el constructor el servicio A, Angular por detrás genera 
+automáticamente la instancia del servicio B y C sin que nosotros nos tengamos que preocupar por estos.
+
+Cuando creaste tu primer servicio con el CLI de Angular:
