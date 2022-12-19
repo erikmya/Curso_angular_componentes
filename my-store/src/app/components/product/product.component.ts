@@ -20,6 +20,7 @@ export class ProductComponent implements OnInit {
     description: ''
   };
   @Output() addedProduct = new EventEmitter<Product>();
+  @Output() showProduct = new EventEmitter<string>();
 
   constructor() { }
 
@@ -28,6 +29,10 @@ export class ProductComponent implements OnInit {
 
   onAddToCart() {
     this.addedProduct.emit(this.product);
+  }
+
+  onShowDetail() {
+    this.showProduct.emit(this.product.id);
   }
 
 }

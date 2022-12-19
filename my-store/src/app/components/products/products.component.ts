@@ -16,8 +16,10 @@ export class ProductsComponent implements OnInit {
   myShoppingCart: Product[] = [];
   total = 0;
   products: Product[] = [];
-  today = new Date();
-  date = new Date(2021, 1, 21)
+  showProductDetail = false;
+  // Fecha actual
+  // today = new Date();
+  // date = new Date(2021, 1, 21)
 
 
   constructor(
@@ -37,5 +39,16 @@ export class ProductsComponent implements OnInit {
   onAddToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
+  }
+
+  toggleProductDetail() {
+    this.showProductDetail = !this.showProductDetail;
+  }
+
+  onShowDetail(id: string) {
+    this.productsService.getProduct(id)
+    .subscribe(data => {
+      console.log('product', data)
+    });
   }
 }
