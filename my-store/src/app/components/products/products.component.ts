@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { switchMap } from 'rxjs/operators';
-
-import { zip } from 'rxjs'
 
 import { Product, CreateProductDTO, UpdateProductDTO } from '../../models/product.model';
 
@@ -15,11 +13,11 @@ import { ProductsService } from '../../services/products.service'
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
 
   myShoppingCart: Product[] = [];
   total = 0;
-  products: Product[] = [];
+  @Input() products: Product[] = [];
   showProductDetail = false;
   // Fecha actual
   // today = new Date();
@@ -35,8 +33,6 @@ export class ProductsComponent implements OnInit {
     },
     description: ''
   };
-limit = 10;
-offset = 0;
 statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
   constructor(
@@ -45,13 +41,8 @@ statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   ) {
     this.myShoppingCart = this.storeService.getShoppingCart();
    }
-
   ngOnInit(): void {
-    this.productsService.getProductsByPage(10, 0)
-    .subscribe(data => {
-      this.products = data;
-      this.offset += this.limit;
-    });
+    throw new Error('Method not implemented.');
   }
 
   onAddToShoppingCart(product: Product) {
@@ -128,11 +119,11 @@ statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
     })
   }
 
-  loadMore() {
-    this.productsService.getProductsByPage(this.limit, this.offset)
-    .subscribe(data => {
-      this.products = this.products.concat(data);
-      this.offset += this.limit;
-    });
-  }
+  // loadMore() {
+  //   this.productsService.getProductsByPage(this.limit, this.offset)
+  //   .subscribe(data => {
+  //     this.products = this.products.concat(data);
+  //     this.offset += this.limit;
+  //   });
+  // }
 }
