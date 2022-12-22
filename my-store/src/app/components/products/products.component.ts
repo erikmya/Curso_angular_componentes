@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { switchMap } from 'rxjs/operators';
 
@@ -15,9 +15,11 @@ import { ProductsService } from '../../services/products.service'
 })
 export class ProductsComponent {
 
+    @Input() products: Product[] = [];
+    @Output() loadMore = new EventEmitter;
+
   myShoppingCart: Product[] = [];
   total = 0;
-  @Input() products: Product[] = [];
   showProductDetail = false;
   // Fecha actual
   // today = new Date();
@@ -119,11 +121,7 @@ statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
     })
   }
 
-  // loadMore() {
-  //   this.productsService.getProductsByPage(this.limit, this.offset)
-  //   .subscribe(data => {
-  //     this.products = this.products.concat(data);
-  //     this.offset += this.limit;
-  //   });
-  // }
+  onloadMore() {
+    this.loadMore.emit();
+  }
 }
